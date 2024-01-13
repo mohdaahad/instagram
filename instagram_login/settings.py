@@ -71,8 +71,8 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'instagram_login.wsgi.application'
 
-GDAL_LIBRARY_PATH=r'E:/instagram_login/env/lib/site-packages/osgeo/gdal304.dll'
-GEOS_LIBRARY_PATH=r'E:/instagram_login/env/lib/site-packages/osgeo/geos_c.dll'
+# GDAL_LIBRARY_PATH=r'E:/instagram_login/env/lib/site-packages/osgeo/gdal304.dll'
+# GEOS_LIBRARY_PATH=r'E:/instagram_login/env/lib/site-packages/osgeo/geos_c.dll'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
