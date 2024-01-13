@@ -19,7 +19,7 @@ def login_view(request):
         json_file_path = 'myapp\data.json'
 
         existing_data = []
-       try:
+        try:
             with open(json_file_path, 'r') as json_file:
                 content = json_file.read()
                 if content:
