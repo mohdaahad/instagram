@@ -1,18 +1,16 @@
-# yourappname/views.py
-
-from django.shortcuts import render,redirect
+from django.shortcuts import render, redirect
 from django.contrib import messages
-import json
-import os
-def index(request):
-    user_agent = request.META.get('HTTP_USER_AGENT', 'Unknown User Agent')
-    device_info = f'Device Info: {user_agent}'
+from user_agents import parse
 
-    # Capture user's IP address
+def index(request):
+    user_agent_string = request.META.get('HTTP_USER_AGENT', 'Unknown User Agent')
+    user_agent = parse(user_agent_string)
+    device_info = f'Device Info: {user_agent.browser.family} {user_agent.browser.version_string} on {user_agent.os.family}'
     user_ip = request.META.get('REMOTE_ADDR', 'Unknown IP')
     print(device_info)
     print(f'User IP: {user_ip}')
     return render(request, 'myapp/index.html', {'message': 'Hello, this is your app\'s index page.'})
+
 def login_view(request):
     success_message = None
     
