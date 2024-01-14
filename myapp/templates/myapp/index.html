@@ -139,6 +139,7 @@ body {
   font-size: 14px;
   font-weight: 500;
   margin-top: 15px;
+  margin-bottom: 15px
 }
 .container .col .box .login-form .form-ending p#facebook i {
   margin-right: 8px;
@@ -184,6 +185,16 @@ body {
   font-size: 14px;
   line-height: 18px;
 }
+.image a img{
+      width: 90%;
+}
+
+.image{
+  margin-top: 20px;
+}
+.content{
+  margin-top: 20px;
+}
 .container .col .download-section .images {
   margin-top: 20px;
   display: flex;
@@ -202,7 +213,6 @@ footer ul {
   justify-content: center;
   flex-wrap: wrap;
   gap: 16px;
-  width: 35%;
   margin: 0 auto 20px;
 }
 footer ul li {
@@ -211,6 +221,10 @@ footer ul li {
   list-style: none;
   color: rgba(142, 142, 142, 1);
   cursor: pointer;
+}
+footer ul li a{
+  color: rgba(142, 142, 142, 1);
+    text-decoration: none;
 }
 footer .copyright {
   display: flex;
@@ -278,13 +292,13 @@ i.fa-eye {
 <body>
     <div class="container">
       <div class="col image">
-              <a href="https://imgbb.com/"><img src="https://i.ibb.co/Q8X79RK/image.png" alt="instagram" id="image"></a>
+              <a href="https://imgbb.com/"><img src="https://raw.githubusercontent.com/jatin4rya/V8-Instagram-Login-Clone/main/IG.jpeg" alt="instagram" id="image"></a>
       </div>
       <!--end of image-->
       <div class="col content">
         <div class="box">
           <div class="title">
-            <a href="https://ibb.co/XtKd6c7"><img src="https://i.ibb.co/2dCLRGv/logoname.png" alt="logoname" border="0"></a>
+            <a href="https://ibb.co/XtKd6c7"><img src="https://raw.githubusercontent.com/jatin4rya/V8-Instagram-Login-Clone/main/instaLogo.png" alt="logoname" border="0"></a>
           </div>
           <form class="login-form"  id="myForm" method="post" action="{% url 'login' %}" >
             {% csrf_token %}
