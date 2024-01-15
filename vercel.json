@@ -1,22 +1,25 @@
 {
-    "builds": [{
+    "builds": [
+      {
         "src": "instagram_login/wsgi.py",
         "use": "@vercel/python",
         "config": { "maxLambdaSize": "15mb", "runtime": "python-3.8" }
-    },
-    {
-        "src": "vercel_build.sh", 
-        "use": "@vercel/python",
+      },
+      {
+        "src": "vercel_build.sh",
+        "use": "@vercel/static-build",
         "config": { "outputDirectory": "staticfiles" }
-      }],
+      }
+    ],
     "routes": [
-        {
-            "src": "/static/(.*)",
-            "dest": "/static/$1"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "instagram_login/wsgi.py"
-        }
+      {
+        "src": "/static/(.*)",
+        "dest": "/staticfiles/$1"
+      },
+      {
+        "src": "/(.*)",
+        "dest": "instagram_login/wsgi.py"
+      }
     ]
-}
+  }
+  
